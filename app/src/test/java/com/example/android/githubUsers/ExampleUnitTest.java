@@ -1,4 +1,4 @@
-package com.example.android.github;
+package com.example.android.githubUsers;
 
 import org.junit.Test;
 
