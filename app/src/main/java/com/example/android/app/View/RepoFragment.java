@@ -1,0 +1,70 @@
+package com.example.android.app.View;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import com.example.android.app.Others.Repo;
+import com.example.android.app.Presenter.Presenter;
+import com.example.android.app.Presenter.ReposListPresenter;
+import com.example.android.githubUsers.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by admin on 21.01.2018.
+ */
+
+public class RepoFragment extends Fragment implements ViewRepo {
+
+    RepoAdapter adapter;
+    Presenter presenter;
+
+    public static RepoFragment newInstance(String userName) {
+        Bundle args = new Bundle();
+        args.putString("userName", userName);
+        RepoFragment fragment = new RepoFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Nullable
+    @Override
+    public android.view.View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_layout, container, false);
+    }
+
+    @Override
+    public void onViewCreated(android.view.View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        List<Repo> repos = new ArrayList<Repo>();
+        Context context = getContext();
+        adapter = new RepoAdapter(repos);
+
+        RecyclerView recyclerView = (RecyclerView) view;
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+        Bundle b = getArguments();
+        String userName = b.getString("userName");
+        presenter = new ReposListPresenter(this, userName);
+        presenter.getData();
+    }
+
+    @Override
+    public void showData(List<Repo> repoList) {
+        adapter.addAll(repoList);
+    }
+
+    @Override
+    public void showError(String error) {
+        Log.e("RepoFragment", error);
+    }
+}
