@@ -1,40 +1,55 @@
 package com.example.android.app.View;
 
 import android.annotation.SuppressLint;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.Menu;
 
-import com.example.android.app.Presenter.Presenter;
-import com.example.android.app.Presenter.UsersListPresenter;
 import com.example.android.githubUsers.R;
-import com.example.android.app.Others.User;
 
-import java.util.List;
+public class MainActivity extends AppCompatActivity{
 
-public class MainActivity extends AppCompatActivity implements View {
 
-    TextView textView;
-    android.view.View view;
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.textView);
-        view = findViewById(R.layout.activity_main);
-        Presenter presenter = new UsersListPresenter(this);
-        presenter.getData();
+
+        UserFragment fragment = UserFragment.newInstance();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.recycler_container, fragment);
+        fragmentTransaction.addToBackStack("myUserFragment");
+        fragmentTransaction.commit();
+
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
     }
 
     @Override
-    public void showData(List<User> userList) {
-        Log.d("list", userList.toString());
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_items, menu);
+        return true;
     }
 
     @Override
-    public void showError(String error) {
-        textView.setText("Error");
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                return true;
+            case R.id.action_settings:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

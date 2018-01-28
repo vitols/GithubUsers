@@ -1,5 +1,6 @@
 package com.example.android.app.Model;
 
+import com.example.android.app.Others.Repo;
 import com.example.android.app.Others.User;
 import com.example.android.app.githubAPI.GitHubApi;
 import com.example.android.app.githubAPI.GitHubApiInterface;
@@ -9,6 +10,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import retrofit2.Response;
 
 /**
  * Created by admin on 17.12.2017.
@@ -28,13 +30,18 @@ public class ModelImpl implements Model {
     }
 
     @Override
-    public Observable<List<String>> getListOfRepositories() {
-        return null;
+    public Observable<List<Repo>> getListOfRepositories(String userName) {
+        return apiInterface
+                .getReposOfUser(userName)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
-    /*@SuppressWarnings("unchecked")
-    <T> ObservableTransformer<T, T> applySchedulers() {
-        observable -> ((Observable) observable).subscribeOn(Schedulers.io())
+    @Override
+    public Observable<User> getSingleUser(String userName) {
+        return apiInterface
+                .getSingleUser(userName)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
-    }*/
+    }
 }

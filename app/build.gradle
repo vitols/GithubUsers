@@ -1,15 +1,17 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.android.application' // or apply plugin: 'java'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.android.github"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
+        //multiDexEnabled true
     }
     buildTypes {
         release {
@@ -20,11 +22,16 @@ android {
     packagingOptions {
         exclude 'META-INF/rxjava.properties'
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:cardview-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -35,4 +42,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0' //Конвертер JSON, можно, если предпочитаете, использовать Jackson
     implementation 'com.android.support:recyclerview-v7:26.1.0' //RecyclerView
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.0.5' //time
+    implementation 'de.hdodenhof:circleimageview:2.2.0' //circleImageView
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'// http
+    implementation 'com.android.support:design:22.2.0' // coordinator layout
 }

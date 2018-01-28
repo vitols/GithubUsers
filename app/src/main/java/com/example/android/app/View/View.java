@@ -9,6 +9,5 @@ import java.util.List;
  */
 
 public interface View {
-    void showData(List<User> userList);
     void showError(String error);
 }
