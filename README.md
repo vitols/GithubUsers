@@ -2,7 +2,7 @@
 
 The app shows users (cards with their info: photo with the count of repositories, name, location, company) in order they signed up on GitHub.
 Tapping on the user you will see the list of their repositories (name and creation date). 
-Based on MVP pattern.
+Based on MVP pattern. Works with Github API.
 
 ## Screenshots
 
