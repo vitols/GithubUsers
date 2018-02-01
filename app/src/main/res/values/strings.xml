@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GithubUsers</string>
+    <string name="alert_dialog_message">\nTry later!</string>
+    <string name="alert_dialog_title">Error</string>
+    <string name="alert_dialog_button">OK</string>
+
 </resources>

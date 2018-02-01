@@ -1,8 +1,6 @@
 package com.example.android.app.View;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.*;
@@ -41,10 +39,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         User user = users.get(position);
-        Glide.with(activity).load(user.getAvatarUrl()).dontAnimate().into(holder.userImage);
+
+        Glide.with(activity)
+                .load(user.getAvatarUrl())
+                .dontAnimate()
+                .into(holder.userImage);
+
         holder.userLogin = user.getLogin();
         holder.userName.setText(user.getName());
         holder.userLocation.setText(user.getLocation());
+
         Integer reposCount = user.getPublicRepos();
         if(reposCount != null)
             holder.userCountOfRepos.setText(reposCount.toString());
@@ -57,6 +61,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        private final String REPO_FRAGMENT = "myRepoFragment";
+
         public ImageView userImage;
         public TextView userName;
         public TextView userLocation;
@@ -66,11 +73,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         public ViewHolder(android.view.View itemView) {
             super(itemView);
+
             userName = (TextView) itemView.findViewById(R.id.card_text_name);
             userLocation = (TextView) itemView.findViewById(R.id.card_text_location);
             userCompany = (TextView) itemView.findViewById(R.id.card_text_company);
             userCountOfRepos = (TextView) itemView.findViewById(R.id.card_text_repos_count);
             userImage = (ImageView) itemView.findViewById(R.id.card_image_user);
+
             itemView.setOnClickListener(this);
         }
 
@@ -78,11 +87,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         public void onClick(View view) {
 
             RepoFragment fragment = RepoFragment.newInstance(this.userLogin);
-            FragmentManager fragmentManager = ((AppCompatActivity) activity).getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.recycler_container, fragment);
-            fragmentTransaction.addToBackStack("myRepoFragment");
-            fragmentTransaction.commit();
+            
+            ((AppCompatActivity) activity).getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.user_fragment_container, fragment)
+                    .addToBackStack(REPO_FRAGMENT)
+                    .commit();
+
         }
     }
 
@@ -93,8 +104,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     public void addSingle(User user, int position) {
-        //ProgressBar progressBar = (ProgressBar)activity.findViewById(R.id.card_progressbar);
-        //progressBar.setVisibility(View.INVISIBLE);
         users.set(position, user);
         notifyItemChanged(position);
     }

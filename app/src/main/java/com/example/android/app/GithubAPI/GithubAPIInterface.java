@@ -1,11 +1,10 @@
-package com.example.android.app.githubAPI;
+package com.example.android.app.GithubAPI;
 
 import com.example.android.app.Others.Repo;
 import com.example.android.app.Others.User;
 
 import java.util.List;
 
-import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import io.reactivex.Observable;
@@ -14,7 +13,7 @@ import io.reactivex.Observable;
  * Created by admin on 17.12.2017.
  */
 
-public interface GitHubApiInterface {
+public interface GithubAPIInterface {
     @GET("/users")
     Observable<List<User>> getUsers();
 

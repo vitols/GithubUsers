@@ -1,9 +1,10 @@
 package com.example.android.app.View;
 
-import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,12 +25,13 @@ import java.util.List;
 
 public class RepoFragment extends Fragment implements ViewRepo {
 
+    private static final String BUNDLE_KEY = "userName";
     RepoAdapter adapter;
     Presenter presenter;
 
     public static RepoFragment newInstance(String userName) {
         Bundle args = new Bundle();
-        args.putString("userName", userName);
+        args.putString(BUNDLE_KEY, userName);
         RepoFragment fragment = new RepoFragment();
         fragment.setArguments(args);
         return fragment;
@@ -45,15 +47,15 @@ public class RepoFragment extends Fragment implements ViewRepo {
     public void onViewCreated(android.view.View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         List<Repo> repos = new ArrayList<Repo>();
-        Context context = getContext();
         adapter = new RepoAdapter(repos);
 
         RecyclerView recyclerView = (RecyclerView) view;
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        Log.e("REPO_FRAGMENT", getActivity().toString());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         Bundle b = getArguments();
-        String userName = b.getString("userName");
+        String userName = b.getString(BUNDLE_KEY);
         presenter = new ReposListPresenter(this, userName);
         presenter.getData();
     }
@@ -65,6 +67,18 @@ public class RepoFragment extends Fragment implements ViewRepo {
 
     @Override
     public void showError(String error) {
-        Log.e("RepoFragment", error);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setMessage(error.toString() + R.string.alert_dialog_message)
+                .setTitle(R.string.alert_dialog_title)
+                .setPositiveButton(R.string.alert_dialog_button, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

@@ -1,4 +1,4 @@
-package com.example.android.app.githubAPI;
+package com.example.android.app.GithubAPI;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -12,21 +12,20 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.HTTP;
 
 /**
  * Created by admin on 17.12.2017.
  */
 
-public class GitHubApi {
+public class GithubAPI {
 
-    private static GitHubApiInterface gitApi;
+    private static GithubAPIInterface gitApi;
     private Retrofit retrofit;
 
     private static final String client_id = "549a86fc3d662f6da6b8";
     private static final String client_secret = "df93a026c9c1d0bad473a2b84920f0bd47f9186e";
 
-    public static GitHubApiInterface getApiInterface(String url) {
+    public static GithubAPIInterface getApiInterface(String url) {
 
         OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -58,6 +57,6 @@ public class GitHubApi {
                 .client(okHttpClient.build())
                 .build();
 
-        return retrofit.create(GitHubApiInterface.class);
+        return retrofit.create(GithubAPIInterface.class);
     }
 }

@@ -1,18 +1,9 @@
-package com.example.android.app.Presenter;
-
-import android.util.Log;
-import android.view.View;
+package com.example.android.app.Presenter;;
 
 import com.example.android.app.Model.Model;
 import com.example.android.app.Model.ModelImpl;
 
 import io.reactivex.disposables.Disposable;
-import io.reactivex.observers.DisposableObserver;
-
-import com.example.android.app.Others.Repo;
-import com.example.android.app.Others.User;
-
-import java.util.List;
 
 /**
  * Created by admin on 21.01.2018.
@@ -34,8 +25,7 @@ public class ReposListPresenter implements Presenter {
     public void getData() {
 
         subscription = model.getListOfRepositories(userName)
-                .filter(repos -> repos!= null)
-                .filter(repos -> !repos.isEmpty())
+                .filter(repos -> repos!= null && !repos.isEmpty())
                 .subscribe(repos -> view.showData(repos), e -> view.showError(e.toString()));
     }
 

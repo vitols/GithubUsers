@@ -2,15 +2,14 @@ package com.example.android.app.Model;
 
 import com.example.android.app.Others.Repo;
 import com.example.android.app.Others.User;
-import com.example.android.app.githubAPI.GitHubApi;
-import com.example.android.app.githubAPI.GitHubApiInterface;
+import com.example.android.app.GithubAPI.GithubAPI;
+import com.example.android.app.GithubAPI.GithubAPIInterface;
 
 import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import retrofit2.Response;
 
 /**
  * Created by admin on 17.12.2017.
@@ -18,7 +17,9 @@ import retrofit2.Response;
 
 public class ModelImpl implements Model {
 
-    private static GitHubApiInterface apiInterface = GitHubApi.getApiInterface("https://api.github.com");
+    private static final String URL = "https://api.github.com";
+
+    private static GithubAPIInterface apiInterface = GithubAPI.getApiInterface(URL);
 
 
     @Override

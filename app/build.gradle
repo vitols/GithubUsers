@@ -11,7 +11,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        //multiDexEnabled true
     }
     buildTypes {
         release {
@@ -46,5 +45,5 @@ dependencies {
     implementation 'com.jakewharton.threetenabp:threetenabp:1.0.5' //time
     implementation 'de.hdodenhof:circleimageview:2.2.0' //circleImageView
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'// http
-    implementation 'com.android.support:design:22.2.0' // coordinator layout
+    implementation 'com.android.support:design:26.1.0' // coordinator layout
 }
