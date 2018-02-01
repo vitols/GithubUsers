@@ -22,8 +22,8 @@ public class GithubAPI {
     private static GithubAPIInterface gitApi;
     private Retrofit retrofit;
 
-    private static final String client_id = "549a86fc3d662f6da6b8";
-    private static final String client_secret = "df93a026c9c1d0bad473a2b84920f0bd47f9186e";
+    private static final String CLIENT_ID = "549a86fc3d662f6da6b8";
+    private static final String CLIENT_SECRET = "df93a026c9c1d0bad473a2b84920f0bd47f9186e";
 
     public static GithubAPIInterface getApiInterface(String url) {
 
@@ -37,8 +37,8 @@ public class GithubAPI {
                 HttpUrl originalHttpUrl = original.url();
 
                 HttpUrl url = originalHttpUrl.newBuilder()
-                        .addQueryParameter("client_id", client_id)
-                        .addQueryParameter("client_secret", client_secret)
+                        .addQueryParameter("client_id", CLIENT_ID)
+                        .addQueryParameter("client_secret", CLIENT_SECRET)
                         .build();
 
                 Request.Builder requestBuilder = original.newBuilder()
