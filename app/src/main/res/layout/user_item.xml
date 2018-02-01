@@ -34,7 +34,6 @@
                 android:layout_height="20dp"
                 android:layout_gravity="right|top"
                 android:id="@+id/card_text_repos_count"
-                android:text="10"
                 android:textAlignment="center"
                 android:background="@drawable/ic_repos_circle"/>
         </FrameLayout>

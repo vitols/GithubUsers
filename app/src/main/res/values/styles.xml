@@ -17,6 +17,13 @@
         <item name="android:gravity">center_horizontal</item>
     </style>
 
+    <style name="RepoTextStyle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">sans-serif-light"</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
     <style name="ActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:actionBarStyle">@style/TransparentStyle</item>
         <item name="android:windowActionBarOverlay">true</item>

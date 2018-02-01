@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_layout);
+        setContentView(R.layout.activity_main);
 
         UserFragment fragment = UserFragment.newInstance();
         getSupportFragmentManager()
