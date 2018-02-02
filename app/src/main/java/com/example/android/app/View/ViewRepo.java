@@ -1,6 +1,6 @@
 package com.example.android.app.View;
 
-import com.example.android.app.Others.Repo;
+import com.example.android.app.Model.Repo;
 
 import java.util.List;
 

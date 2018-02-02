@@ -1,6 +1,6 @@
 package com.example.android.app.View;
 
-import com.example.android.app.Others.User;
+import com.example.android.app.Model.User;
 import com.example.android.app.Presenter.Presenter;
 import com.example.android.app.Presenter.PresenterUser;
 import com.example.android.app.Presenter.SingleUserPresenter;

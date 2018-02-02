@@ -1,7 +1,5 @@
 package com.example.android.app.Model;
 
-import com.example.android.app.Others.Repo;
-import com.example.android.app.Others.User;
 import com.example.android.app.GithubAPI.GithubAPI;
 import com.example.android.app.GithubAPI.GithubAPIInterface;
 

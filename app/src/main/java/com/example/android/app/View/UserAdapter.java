@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.android.app.Others.User;
+import com.example.android.app.Model.User;
 import com.example.android.githubUsers.R;
 
 
@@ -85,7 +85,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         @Override
         public void onClick(View view) {
-
             RepoFragment fragment = RepoFragment.newInstance(this.userLogin);
             
             ((AppCompatActivity) activity).getSupportFragmentManager()
@@ -93,7 +92,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                     .replace(R.id.user_fragment_container, fragment)
                     .addToBackStack(REPO_FRAGMENT)
                     .commit();
-
         }
     }
 

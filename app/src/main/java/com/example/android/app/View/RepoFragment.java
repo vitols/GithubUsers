@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.android.app.Others.Repo;
+import com.example.android.app.Model.Repo;
 import com.example.android.app.Presenter.Presenter;
 import com.example.android.app.Presenter.ReposListPresenter;
 import com.example.android.githubUsers.R;
@@ -51,7 +51,6 @@ public class RepoFragment extends Fragment implements ViewRepo {
 
         RecyclerView recyclerView = (RecyclerView) view;
         recyclerView.setAdapter(adapter);
-        Log.e("REPO_FRAGMENT", getActivity().toString());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         Bundle b = getArguments();

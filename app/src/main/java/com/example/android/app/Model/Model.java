@@ -1,12 +1,8 @@
 package com.example.android.app.Model;
 
-import com.example.android.app.Others.Repo;
-import com.example.android.app.Others.User;
-
 import java.util.List;
 
 import io.reactivex.Observable;
-import retrofit2.Response;
 
 /**
  * Created by admin on 17.12.2017.

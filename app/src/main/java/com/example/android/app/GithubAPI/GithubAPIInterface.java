@@ -1,7 +1,7 @@
 package com.example.android.app.GithubAPI;
 
-import com.example.android.app.Others.Repo;
-import com.example.android.app.Others.User;
+import com.example.android.app.Model.Repo;
+import com.example.android.app.Model.User;
 
 import java.util.List;
 

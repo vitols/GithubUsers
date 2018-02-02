@@ -48,20 +48,12 @@ public class GithubAPI {
             }
         });
 
-        HttpLoggingInterceptor interceptor2 = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
-        okHttpClient.addInterceptor(interceptor);
-
-        Log.v("request: ", okHttpClient.toString());
-
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient.build())
                 .build();
-
 
         return retrofit.create(GithubAPIInterface.class);
     }

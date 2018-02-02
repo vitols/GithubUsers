@@ -1,6 +1,6 @@
 package com.example.android.app.View;
 
-import com.example.android.app.Others.User;
+import com.example.android.app.Model.User;
 
 /**
  * Created by admin on 21.01.2018.

@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.*;
 import android.widget.TextView;
 
-import com.example.android.app.Others.Repo;
+import com.example.android.app.Model.Repo;
 import com.example.android.githubUsers.R;
 
 import org.threeten.bp.ZoneId;
