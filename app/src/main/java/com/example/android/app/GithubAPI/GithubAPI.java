@@ -21,8 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class GithubAPI {
 
-    private static final String CLIENT_ID = "549a86fc3d662f6da6b8";
-    private static final String CLIENT_SECRET = "df93a026c9c1d0bad473a2b84920f0bd47f9186e";
+    private static final String CLIENT_ID = "";
+    private static final String CLIENT_SECRET = "";
 
     public static GithubAPIInterface getApiInterface(String url) {
 
