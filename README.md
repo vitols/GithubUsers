@@ -11,8 +11,8 @@ You need to register the app on Github, then take CLIENT_ID and CLIENT_SECRET an
 ### Screenshots
 
 <div style="display:flex;">
-<img style="margin-left:10px;" src="screenshots/1.png" width="19%" >
-<img style="margin-left:10px;" src="screenshots/2.png" width="19%" >
+<img style="margin-left:10px;" src="screenshots/1.png" width="30%" >
+<img style="margin-left:10px;" src="screenshots/2.png" width="30%" >
 </div>
 
 #### Built With
